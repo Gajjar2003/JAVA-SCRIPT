@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function additems() {
+            var n1 = Number(prompt("Enter Your First number :"))
+            var n2 = Number(prompt("Enter Your second number :"))
+            var n3 = n1 + n2
+            alert(n3)
+        }
+
+        function subitems() {
+            var n1 = prompt("Enter Your First number :")
+            var n2 = prompt("Enter Your second number :")
+            var n3 = n1 - n2
+            alert(n3)
+        }
+        function mulitems() {
+            var n1 = prompt("Enter Your First number :")
+            var n2 = prompt("Enter Your second number :")
+            var n3 = n1 * n2
+            alert(n3)
+        }
+
+        function divitems() {
+            var n1 = prompt("Enter Your First number :")
+            var n2 = prompt("Enter Your second number :")
+            var n3 = n1 / n2
+            alert(n3)
+        }
+
+        function expneitems() {
+            var n1 = prompt("Enter Your First number :")
+            var n2 = prompt("Enter Your second number :")
+            var n3 = n1 ** n2
+            alert(n3)
+        }
+
+        function remitems() {
+            var n1 = prompt("Enter Your First number :")
+            var n2 = prompt("Enter Your second number :")
+            var n3 = n1 % n2
+            alert(n3)
+        }
+
+        function assitems() {
+
+            let a = 1;
+            let b = 3
+            let c = 6 - (a = b + 1)
+            alert(c)
+        }
+
+        function postitems() {
+            let counter = 1      // First increase, then use
+            let a = ++counter
+            alert(a)
+        }
+
+        function peritems() {
+            let counter = 1    // First use, then increase
+            let a = counter++
+            alert(a)
+        }
+    </script>
+
+
+    <button onclick="additems()"> addition</button>
+    <button onclick=" subitems()"> subtraction</button>
+    <button onclick="mulitems()"> multiplication</button>
+    <button onclick="divitems()"> division</button>
+    <button onclick="expneitems()"> exponentiation</button>
+    <button onclick="remitems()"> Remainder</button>
+    <button onclick="assitems()"> assignments</button>
+
+    <button onclick="postitems()">Post increment</button>
+    <button onclick="peritems()">Per increment</button>
+</body>
+
+</html>
