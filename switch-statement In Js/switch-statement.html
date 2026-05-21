@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch-statement</title>
+</head>
+<body>
+    <img src="download.jpeg" alt="" id="img1"><br>
+    <button onclick="ChangeImg('blur')">Blur</button>
+    <button onclick="ChangeImg('brigth')">Brightness</button>
+    <button onclick="ChangeImg('contrast')">Contrast</button>
+
+    <script>
+        function ChangeImg(filterimg)
+        {
+            let img = document.getElementById('img1');
+            switch(filterimg){
+                case 'blur':
+                    img.style.filter='blur(2px)';
+                break;
+
+                case 'brigth':
+                    img.style.filter='brightness(150%)';
+                break;
+
+                case 'contrast' : 
+                    img.style.filter='contrast(50%)';
+                break;
+
+                default:
+                    console.log("invalid Choice");
+                    
+            }
+        }
+    </script>
+</body>
+</html>

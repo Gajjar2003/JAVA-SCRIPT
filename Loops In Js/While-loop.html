@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop Example</title>
+</head>
+
+<body>
+
+    <h1>While Loops Example</h1>
+
+    <fieldset>
+        <legend>While Loops</legend>
+
+        <input type="text" id="num1">
+
+        <input type="button" value="Submit" onclick="whileloops()">
+
+        <div id="result"></div>
+    </fieldset>
+
+    <script>
+
+        function whileloops() {
+
+            let num = document.getElementById('num1').value;
+            let rem;
+            let rev = 0;
+            while (num != 0) {
+                rem = num % 10;
+                rev = rev * 10 + rem;
+                num = parseInt(num / 10);
+            }
+
+            document.getElementById('result').innerHTML =`Reverse Number : ${rev}`;
+        }
+
+    </script>
+
+</body>
+
+</html>
