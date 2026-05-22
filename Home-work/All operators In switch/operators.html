@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Using Switch</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            width: 400px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1{
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-group{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button{
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #0056b3;
+        }
+
+        #result{
+            margin-top: 20px;
+            font-size: 24px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Calculator Using Switch</h1>
+
+        <input type="number" id="num1" placeholder="Enter First Number">
+
+        <input type="number" id="num2" placeholder="Enter Second Number">
+
+        <div class="btn-group">
+            <button onclick="allOperator('add')">Addition +</button>
+            <button onclick="allOperator('sub')">Subtraction -</button>
+
+            <button onclick="allOperator('mul')">Multiply *</button>
+            <button onclick="allOperator('div')">Division /</button>
+
+            <button onclick="allOperator('rem')">Remainder %</button>
+            <button onclick="allOperator('exp')">Power **</button>
+        </div>
+
+        <h2 id="result">Result: 0</h2>
+
+    </div>
+
+    <script>
+
+        function allOperator(operation){
+
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+
+            let result;
+
+            switch(operation){
+
+                case "add":
+                    result = num1 + num2;
+                    break;
+
+                case "sub":
+                    result = num1 - num2;
+                    break;
+
+                case "mul":
+                    result = num1 * num2;
+                    break;
+
+                case "div":
+                    if(num2 === 0){
+                        result = "Cannot divide by 0";
+                    }else{
+                        result = num1 / num2;
+                    }
+                    break;
+
+                case "rem":
+                    result = num1 % num2;
+                    break;
+
+                case "exp":
+                    result = num1 ** num2;
+                    break;
+
+                default:
+                    result = "Invalid Operation";
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //function with parameter
+
+        function add(x, y) {
+            let z = x + y;
+            console.log(z);
+
+        }
+        add(10, 20)
+
+        //function with default value
+
+        function mul(x, y, z = 2) {
+            let j = x * y * z
+            console.log(j);
+
+        }
+        mul(2, 3)
+
+        
+        //function returing value
+
+        function square(num){
+            return num*num;
+
+        }
+        console.log(square(12));
+        
+
+          //function called itsself
+
+          function fact(num){
+            if (num==1){
+                return 1;
+            }
+            let f = num *fact(num-1)
+            return f;
+          }
+          console.log(fact(5));
+          
+     
+          
+
+    </script>
+</body>
+
+</html>
