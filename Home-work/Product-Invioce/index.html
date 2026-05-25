@@ -3,9 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Invoice</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        fieldset{
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        legend{
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input{
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: darkgreen;
+        }
+
+        #result{
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px lightgray;
+        }
+
+        #result h2{
+            text-align: center;
+            color: green;
+        }
+
+        #result p{
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <fieldset>
+        <legend>Product Information</legend>
+
+        <input type="text" id="pro-name" placeholder="Product Name"><br><br>
+
+        <input type="number" id="pro-price" placeholder="Product Price"><br><br>
+
+        <input type="number" id="pro-qty" placeholder="Product Quantity"><br><br>
+
+        <button onclick="generateInvoice()">Invoice</button>
+    </fieldset>
+
+    <div id="result"></div>
+
+    <script>
+
+        let pro1 = document.getElementById('pro-name');
+        let pro2 = document.getElementById('pro-price');
+        let pro3 = document.getElementById('pro-qty');
+
+        function generateInvoice() {
+
+            let name = pro1.value;
+            let price = Number(pro2.value);
+            let qty = Number(pro3.value);
+            let total = price * qty;
+
+            document.getElementById("result").innerHTML = `
+                <h2>Invoice</h2>
+                <p><b>Product Name:</b> ${name}</p>
+                <p><b>Price:</b> ₹${price}</p>
+                <p><b>Quantity:</b> ${qty}</p>
+                <p><b>Total Amount:</b> ₹${total}</p>
+            `;
+        }
+
+    </script>
+
 </body>
 </html>
