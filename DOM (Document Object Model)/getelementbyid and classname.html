@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main{
+        display:flex;
+        gap:10px;
+    }
+    .box{
+        height:100px;
+        width:100px;
+        border:2px solid red;
+    }
+</style>
+<body>
+    <h1>DOM (Document Object Model)</h1>
+    <p id="pro1">
+        lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget aliquam nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget aliquam nisl nunc eget nisl.
+    </p>
+<br>
+<button onclick="changeText()">Change Text</button>
+
+<hr>
+
+<div class="main">
+    <div class="box" id="box-1">box 1</div>
+    <div class="box" id="box-2">box 2</div>
+    <div class="box" id="box-3">box 3</div>
+    <div class="box" id="box-4">box 4</div>
+    <div class="box" id="box-5">box 5</div>
+    <div class="box" id="box-6">box 6</div>
+    <div class="box" id="box-7">box 7</div>
+</div>
+
+<button onclick="changeBoxColor()">Change Box Color</button>
+<script>
+    function changeText(){
+        let p1 = document.getElementById('pro1');
+        console.log(p1);
+        p1.style.color = "blue";
+        
+    }
+
+    function changeBoxColor(){
+          let boxArray = document.getElementsByClassName('box');
+            console.log(boxArray);
+            for(i=0;i<boxArray.length;i++){
+                if(i%2==0){
+                    boxArray[i].style.backgroundColor="gray"
+                }
+            };
+      
+    }
+
+
+</script>
+</body>
+</html>
