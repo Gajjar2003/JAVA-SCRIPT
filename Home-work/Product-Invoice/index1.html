@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+
+    <style>
+        .main {
+            height: 600px;
+        }
+
+        fieldset {
+            width: 40%;
+            height: 100%;
+            margin: 20px auto;
+        }
+
+        fieldset input {
+            width: 97%;
+            padding: 10px;
+        }
+
+        fieldset button {
+            width: 100%;
+            padding: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .result {
+            height: auto;
+            width: 30%;
+            border: 2px solid rgb(140, 139, 139);
+            margin: 20px auto;
+            text-align: left;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <h1>Create Invoice</h1>
+
+        <fieldset>
+            <legend>Invoice Details</legend>
+
+            <input type="text" placeholder="Enter Invoice Number" id="num"><br><br>
+
+            <input type="text" placeholder="Enter Invoice Date" id="date"><br><br>
+
+            <input type="text" placeholder="Enter Customer Name" id="name"><br><br>
+
+            <input type="email" placeholder="Enter Customer Email" id="email"><br><br>
+
+            <input type="text" placeholder="Enter Customer Phone" id="phone"><br><br>
+
+            <input type="text" placeholder="Enter Customer Address" id="address"><br><br>
+
+            <input type="text" placeholder="Enter Product Name" id="pro-name"><br><br>
+
+            <input type="number" placeholder="Enter Product Qty" id="pro-qty"><br><br>
+
+            <input type="number" placeholder="Enter Product Price" id="pro-price"><br><br>
+
+            <button onclick="showInvoice()">Submit</button>
+
+        </fieldset>
+
+        <div class="result" id="result">
+            Result
+        </div>
+
+    </div>
+
+    <script>
+
+        let num1 = document.getElementById('num');
+        let date1 = document.getElementById('date');
+        let name1 = document.getElementById('name');
+        let email1 = document.getElementById('email');
+        let phone1 = document.getElementById('phone');
+        let address1 = document.getElementById('address');
+        let proName1 = document.getElementById('pro-name');
+        let proQty1 = document.getElementById('pro-qty');
+        let proPrice1 = document.getElementById('pro-price');
+
+        function showInvoice() {
+
+            let number = num1.value;
+            let date = date1.value;
+            let name = name1.value;
+            let email = email1.value;
+            let phone = phone1.value;
+            let address = address1.value;
+            let proName = proName1.value;
+            let proQty = Number(proQty1.value);
+            let proPrice = Number(proPrice1.value);
+
+            let total = proQty * proPrice;
+
+            document.getElementById('result').innerHTML += `
+                <p><b>Invoice Number:</b> ${number}</p>
+                <p><b>Invoice Date:</b> ${date}</p>
+                <p><b>Customer Name:</b> ${name}</p>
+                <p><b>Customer Email:</b> ${email}</p>
+                <p><b>Customer Phone:</b> ${phone}</p>
+                <p><b>Customer Address:</b> ${address}</p>
+                <p><b>Product Name:</b> ${proName}</p>
+                <p><b>Product Quantity:</b> ${proQty}</p>
+                <p><b>Product Price:</b> ${proPrice}</p>
+                <p><b>Total:</b> ${total}</p>
+            `;
+        }
+
+    </script>
+
+</body>
+
+</html>
