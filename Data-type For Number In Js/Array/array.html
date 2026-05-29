@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // check for typeof array
+
+        let fruits = ['apple','banana','orenge'];
+        console.log(fruits);
+        console.log(typeof(fruits));
+
+        let vegs = new Array('tomato','potato');
+        console.log(vegs);
+
+        // check for array length;
+        console.log(fruits.length);
+        console.log(vegs.length);
+
+        //check for array to index position
+
+        console.log(fruits[0]);
+        console.log(vegs[1]);
+
+        // check for array last index position;
+
+        console.log(fruits[fruits.length-1]);
+        console.log(vegs.at(-1));
+
+
+        // add to array element for starting position
+
+        fruits.unshift('grapes');
+        console.log(fruits);
+
+        // and starting element remove for array
+
+        fruits.shift();
+        console.log(fruits);
+
+        // add to array element for last position
+
+        vegs.push('cabbage');
+        console.log(vegs);
+
+        // and last element remove for array
+
+        vegs.pop();
+        console.log(vegs);
+
+
+        // and array element for middle position
+
+        fruits.splice(1,0,'kiwi');
+        console.log(fruits);
+
+
+
+
+
+    </script>
+</body>
+</html>
