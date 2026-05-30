@@ -31,8 +31,11 @@
                     </div>
 
                     <div class="col-md-4 d-grid">
-                        <button class="btn btn-primary" id="addBtn" onclick = "addProduct()">
+                        <button class="btn btn-primary" id="addBtn" onclick="addProduct()">
                             Add Product
+                        </button>
+                        <button class="btn btn-primary" id="updateBtn" onclick="updateProduct()">
+                            Update Product
                         </button>
                     </div>
 
@@ -67,28 +70,35 @@
 
     <script>
 
-    let products = [];
+        let products = [];
 
-    function addProduct() {
+        function addProduct() {
 
-        let name = document.getElementById('productName').value;
-        let price = document.getElementById('productPrice').value;
-        let qty = document.getElementById('productQty').value;
+            let name = document.getElementById('productName').value;
+            let price = document.getElementById('productPrice').value;
+            let qty = document.getElementById('productQty').value;
 
-        // STORE VALUES
-        products.push(name, price, qty);
 
-        productsShow();
-    }
+            products.push(name, price, qty);
 
-    function productsShow() {
+            productsShow();
 
-        let str = "";
+            name = document.getElementById('productName').value = "";
+            price = document.getElementById('productPrice').value = "";
+            qty = document.getElementById('productQty').value = "";
+        }
 
-        // i = i + 3
-        for (let i = 0; i < products.length; i += 3) {
+        function productsShow() {
 
-            str += `
+            document.getElementById('addBtn').style.display = "block";
+            document.getElementById('updateBtn').style.display = "none";
+
+            let str = "";
+
+
+            for (let i = 0; i < products.length; i += 3) {
+
+                str += `
                 <tr>
                     <td>${(i / 3) + 1}</td>
                     <td>${products[i]}</td>
@@ -98,17 +108,44 @@
                     <td><button onclick="editProduct(${i})">Edit</button></td>
                 </tr>
             `;
+            }
+
+            document.getElementById('productTable').innerHTML = str;
         }
 
-        document.getElementById('productTable').innerHTML = str;
-    }
+        function deleteProduct(id) {
+            products.splice(id, 1);
+            productsShow();
+        }
 
-    function deleteProduct(id) {
-        products.splice(id,1);
-        productsShow();
-    }
+        function editProduct(id) {
+            document.getElementById('productName').value = products[id];
+            document.getElementById('productPrice').value = products[id + 1];
+            document.getElementById('productQty').value = products[id + 2];
+            editid = id;
+            document.getElementById('addBtn').style.display = "none";
+            document.getElementById('updateBtn').style.display = "block";
 
-</script>
+
+
+        }
+
+        function updateProduct() {
+            let name = document.getElementById('productName').value;
+            let price = document.getElementById('productPrice').value;
+            let qty = document.getElementById('productQty').value;
+
+            products.splice(editid, 3, name, price, qty);
+            productsShow();
+
+            name = document.getElementById('productName').value = "";
+            price = document.getElementById('productPrice').value = "";
+            qty = document.getElementById('productQty').value = "";
+            editid = null;
+        }
+        window.onload = productsShow();
+
+    </script>
 
 </body>
 
