@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // find to slice method in array in ues to find the element in array and return the new array
+
+        let fruits = ["Apple", "Banana", "Cherry"];
+        console.log(fruits.slice(1, 3));
+
+        // find tp concate method in array in ues to concate two array and return the new array
+
+        let moreFruits = ["Date", "Elderberry"];
+        console.log(fruits.concat(moreFruits));
+
+        // find to forech method in array in use to iterate over the array and return the new array
+
+        fruits.forEach((index) => {
+            console.log(index.toUpperCase());
+        });
+
+        let findName = fruits.find((index, i) => {
+            if (index == "Apple") {
+                return index
+            }
+        })
+
+        console.log(findName);
+
+
+
+    </script>
+</body>
+
+</html>

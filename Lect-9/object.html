@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: "jenil",
+            email : "jenil@gamil.com",
+            age : 22,
+            printuser:function(){
+            console.log(`Welcome to : ${this.name}`);
+            }
+        }
+
+        user.printuser();
+
+
+      function Product(name,price){
+        this.name = name;
+        this.price = price;
+        this.printProudct = function(){
+            console.log(this.name,this.price);
+        }
+      }
+      let p1 = new Product("PC",125000);
+      p1.printProudct();
+
+      let p2 = new Product("Laptop",75000);
+      p2.printProudct();
+    </script>
+</body>
+</html>

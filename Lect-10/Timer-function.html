@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="main" id="main">
+            <h2 id="load">Loading.....</h2>
+           
+    </div>
+     <p id="timer"></p>
+
+     <script>
+        let counter = 0;
+        function printMeg(){
+          document.getElementById('main').innerHTML = `<h2>Welcome To JavaScript</h2>`;
+          document.getElementById('load').style.display = 'none';
+
+        }
+
+        function PrintTimer(){
+            counter++;
+            let str = `<h3>Counter: ${counter}</h3>`
+            document.getElementById('timer').innerHTML = str;
+        }
+
+        setTimeout(printMeg, 3000);
+        setInterval(PrintTimer, 1000);
+     </script>
+</body>
+</html>

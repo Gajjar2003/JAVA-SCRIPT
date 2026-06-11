@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Use to pramater in function
+
+        function add(a, b, ...rest) {
+            let sum = a + b;
+            for (let i = 0; i < rest.length; i++) {
+                sum += rest[i];
+            }
+            return sum;
+        }
+
+        console.log(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+
+        // Not use to pramater in function
+
+
+        function getValue() {
+            for (i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+
+        getValue('Hi', 'Hello', 'Welcome', 'to', 'JavaScript');
+
+
+
+        let numArray = [1, 2, 9893, 444, 955];
+        console.log(Math.max(...numArray));
+
+        let numArray2 = [1, 2, 9893, 444, 955, ...numArray, 1000];
+        console.log(numArray2);
+
+    </script>
+</body>
+
+</html>

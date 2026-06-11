@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let User = {
+            name :"Jenil",
+            email : "Jenil@gamil.com",
+            phone : 1234567890
+        }
+
+        function printUser(role){
+            console.log(this.name);
+            console.log(this.email);
+            console.log(this.phone);
+            console.log(role);
+        }
+
+        // call method
+
+        printUser.call(User,"user-role");
+
+        // apply method
+
+        printUser.apply(User,['user-role']);
+
+        // bind method
+
+        let newprint = printUser.bind(User,"user-role");
+        console.log(newprint);
+        newprint();
+
+
+    </script>
+</body>
+</html>
