@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Account{
+            constructor(holdername,account,bla){
+                this.holdername = holdername;
+                this.account = account;
+                this.bla = bla;
+                console.log("present class constructor");
+
+            }
+
+            printInfo(){
+                console.log(`Account Holder Name : ${this.holdername} Account Number is  :${this.account} and Blance is  ${this.bla}`);
+            }
+        }
+
+        class Current extends Account{
+            constructor(iamt,holdername,account,bla){
+                super(holdername,account,bla);
+                this.iamt = iamt;
+                
+            }
+
+            calIntrest(){
+                this.bla = this.bla + (this.bla * this.iamt);
+                console.log(`Current Account Balance is : ${this.bla}`);
+            }
+        }
+
+        let c1 = new Current(0.05,"Jenil",1234567891254,100000);
+        c1.printInfo();
+        c1.calIntrest();
+    </script>
+</body>
+</html>
