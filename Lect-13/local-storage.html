@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name : "jenil",
+            email : "jenil@gamil.com",
+            age : 21,
+            city : "Surat"
+        }
+
+        localStorage.setItem('curuser',JSON.stringify(user));
+        let userget = localStorage.getItem('curuser');
+        userget = JSON.parse(userget);
+        console.log(userget);
+
+        localStorage.removeItem('curuser')
+
+        
+    </script>
+</body>
+</html>
