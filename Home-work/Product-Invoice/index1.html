@@ -4,119 +4,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Invoice Generator</title>
 
     <style>
-        .main {
-            height: 600px;
+        body {
+            font-family: Arial, sans-serif;
         }
 
         fieldset {
             width: 40%;
-            height: 100%;
             margin: 20px auto;
+            padding: 20px;
         }
 
-        fieldset input {
+        input {
             width: 97%;
             padding: 10px;
+            margin-top: 5px;
         }
 
-        fieldset button {
+        button {
             width: 100%;
-            padding: 8px;
-        }
-
-        h1 {
-            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
         }
 
         .result {
-            height: auto;
-            width: 30%;
-            border: 2px solid rgb(140, 139, 139);
+            width: 40%;
             margin: 20px auto;
-            text-align: left;
+            border: 2px solid #ccc;
+            padding: 20px;
+        }
+
+        .item {
+            border: 1px solid #ddd;
             padding: 10px;
+            margin-top: 10px;
+        }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            width: auto;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="main">
+    <h1 align="center">Invoice Generator</h1>
 
-        <h1>Create Invoice</h1>
+    <fieldset>
+        <legend>Invoice Details</legend>
 
-        <fieldset>
-            <legend>Invoice Details</legend>
+        <input type="text" id="num" placeholder="Invoice Number">
 
-            <input type="text" placeholder="Enter Invoice Number" id="num"><br><br>
+        <input type="date" id="date">
 
-            <input type="text" placeholder="Enter Invoice Date" id="date"><br><br>
+        <input type="text" id="name" placeholder="Customer Name">
 
-            <input type="text" placeholder="Enter Customer Name" id="name"><br><br>
+        <input type="email" id="email" placeholder="Customer Email">
 
-            <input type="email" placeholder="Enter Customer Email" id="email"><br><br>
+        <input type="text" id="phone" placeholder="Customer Phone">
 
-            <input type="text" placeholder="Enter Customer Phone" id="phone"><br><br>
+        <input type="text" id="address" placeholder="Customer Address">
 
-            <input type="text" placeholder="Enter Customer Address" id="address"><br><br>
+        <input type="text" id="pro-name" placeholder="Product Name">
 
-            <input type="text" placeholder="Enter Product Name" id="pro-name"><br><br>
+        <input type="number" id="pro-qty" placeholder="Product Qty">
 
-            <input type="number" placeholder="Enter Product Qty" id="pro-qty"><br><br>
+        <input type="number" id="pro-price" placeholder="Product Price">
 
-            <input type="number" placeholder="Enter Product Price" id="pro-price"><br><br>
+        <button onclick="addItem()">Add Item</button>
+    </fieldset>
 
-            <button onclick="showInvoice()">Submit</button>
+    <div class="result">
+        <h2>Invoice</h2>
 
-        </fieldset>
+        <p><b>Invoice No:</b> <span id="invoiceNo"></span></p>
+        <p><b>Date:</b> <span id="invoiceDate"></span></p>
+        <p><b>Name:</b> <span id="customerName"></span></p>
+        <p><b>Email:</b> <span id="customerEmail"></span></p>
+        <p><b>Phone:</b> <span id="customerPhone"></span></p>
+        <p><b>Address:</b> <span id="customerAddress"></span></p>
 
-        <div class="result" id="result">
-            Result
-        </div>
+        <hr>
 
+        <div id="items"></div>
+
+        <h3>Total Amount: ₹<span id="grandTotal">0</span></h3>
     </div>
 
     <script>
 
-        let num1 = document.getElementById('num');
-        let date1 = document.getElementById('date');
-        let name1 = document.getElementById('name');
-        let email1 = document.getElementById('email');
-        let phone1 = document.getElementById('phone');
-        let address1 = document.getElementById('address');
-        let proName1 = document.getElementById('pro-name');
-        let proQty1 = document.getElementById('pro-qty');
-        let proPrice1 = document.getElementById('pro-price');
+        let grandTotal = 0;
 
-        function showInvoice() {
+        function addItem() {
 
-            let number = num1.value;
-            let date = date1.value;
-            let name = name1.value;
-            let email = email1.value;
-            let phone = phone1.value;
-            let address = address1.value;
-            let proName = proName1.value;
-            let proQty = Number(proQty1.value);
-            let proPrice = Number(proPrice1.value);
+            let num = document.getElementById("num").value;
+            let date = document.getElementById("date").value;
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let address = document.getElementById("address").value;
 
-            let total = proQty * proPrice;
+            let productName = document.getElementById("pro-name").value;
+            let qty = Number(document.getElementById("pro-qty").value);
+            let price = Number(document.getElementById("pro-price").value);
 
-            document.getElementById('result').innerHTML += `
-                <p><b>Invoice Number:</b> ${number}</p>
-                <p><b>Invoice Date:</b> ${date}</p>
-                <p><b>Customer Name:</b> ${name}</p>
-                <p><b>Customer Email:</b> ${email}</p>
-                <p><b>Customer Phone:</b> ${phone}</p>
-                <p><b>Customer Address:</b> ${address}</p>
-                <p><b>Product Name:</b> ${proName}</p>
-                <p><b>Product Quantity:</b> ${proQty}</p>
-                <p><b>Product Price:</b> ${proPrice}</p>
-                <p><b>Total:</b> ${total}</p>
-            `;
+            let total = qty * price;
+
+            document.getElementById("invoiceNo").innerText = num;
+            document.getElementById("invoiceDate").innerText = date;
+            document.getElementById("customerName").innerText = name;
+            document.getElementById("customerEmail").innerText = email;
+            document.getElementById("customerPhone").innerText = phone;
+            document.getElementById("customerAddress").innerText = address;
+
+            let itemDiv = document.createElement("div");
+            itemDiv.className = "item";
+
+            itemDiv.innerHTML = `
+        <p><b>Product:</b> ${productName}</p>
+        <p><b>Qty:</b> ${qty}</p>
+        <p><b>Price:</b> ₹${price}</p>
+        <p><b>Total:</b> ₹${total}</p>
+    `;
+
+            let removeBtn = document.createElement("button");
+            removeBtn.innerText = "Remove";
+            removeBtn.className = "remove-btn";
+
+            removeBtn.onclick = function () {
+
+                grandTotal -= total;
+                document.getElementById("grandTotal").innerText = grandTotal;
+
+                itemDiv.remove();
+            };
+
+            itemDiv.appendChild(removeBtn);
+
+            document.getElementById("items").appendChild(itemDiv);
+
+            grandTotal += total;
+            document.getElementById("grandTotal").innerText = grandTotal;
+
+
+
+            document.getElementById("num").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("pro-name").value = "";
+            document.getElementById("pro-qty").value = "";
+            document.getElementById("pro-price").value = "";
         }
 
     </script>
