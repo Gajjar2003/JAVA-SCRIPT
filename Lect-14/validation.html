@@ -39,6 +39,11 @@
                             <div class="mb-3" id="passdiv">
                                 <label class="form-label">Password</label>
                                 <input type="password" class="form-control" placeholder="Enter Password" id="password">
+                                <p id="pwdE-1">A-Z a-z</p>
+
+                                <p id="pwdE-3">0-9</p>
+                                <p id="pwdE-4">Special Char(@,%,&,*)</p>
+                                <p id="pwdE-5">Max len > 8</p>
                             </div>
 
                             <div class="mb-3" id="phonediv">
@@ -66,18 +71,73 @@
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const pwdRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/
 
+        document.getElementById('password').addEventListener('focus', () => {
+            document.getElementById('passworderror').style.display = "block"
+        })
+        password.addEventListener("keyup", function (e) {
+
+            let val = e.target.value;
+            if (/^(?=.*[A-Z])(?=.*[a-z])/.test(val)) {
+                document.getElementById("pwdE-1").style.color = "green";
+            } else {
+                document.getElementById("pwdE-1").style.color = "red";
+            }
+
+            if (/\d/.test(val)) {
+                document.getElementById("pwdE-3").style.color = "green";
+            } else {
+                document.getElementById("pwdE-3").style.color = "red";
+            }
+
+            if (/[@$!%*?&]/.test(val)) {
+                document.getElementById("pwdE-4").style.color = "green";
+            } else {
+                document.getElementById("pwdE-4").style.color = "red";
+            }
+
+            if (val.length >= 8) {
+                document.getElementById("pwdE-5").style.color = "green";
+            } else {
+                document.getElementById("pwdE-5").style.color = "red";
+            }
+
+
+            if (pwdRegex.test(val)) {
+
+                document.getElementById("pwdE-1").style.display = "none";
+                document.getElementById("pwdE-3").style.display = "none";
+                document.getElementById("pwdE-4").style.display = "none";
+                document.getElementById("pwdE-5").style.display = "none";
+
+            } else {
+
+                document.getElementById("pwdE-1").style.display = "block";
+                document.getElementById("pwdE-3").style.display = "block";
+                document.getElementById("pwdE-4").style.display = "block";
+                document.getElementById("pwdE-5").style.display = "block";
+
+            }
+
+
+        });
+
+
 
         document.getElementById('formid').addEventListener('submit', (event) => {
             event.preventDefault();
             let username = document.getElementById('username');
             let email = document.getElementById('email');
-           
+            let password = document.getElementById('password');
+            let phone = document.getElementById('phone');
+
 
 
 
             let usererror = document.getElementById('userError');
             let emailerror = document.getElementById('emailerror');
-         
+            let passworderror = document.getElementById('passworderror');
+            let phoneerror = document.getElementById('phoneerror');
+
 
 
             if (username.value == "") {
@@ -91,29 +151,102 @@
                 username.focus();
                 return false;
             }
-            else{
+            if (usererror) {
                 usererror.remove();
             }
 
 
             if (email.value == "" || !emailRegex.test(email.value)) {
+
+                if (!emailerror) {
+                    let p1 = document.createElement("p");
+                    p1.id = "emailerror";
+                    p1.textContent = "Email Required Ex: abc@example.com";
+                    p1.style.color = "red";
+
+                    document.getElementById("emaildiv").appendChild(p1);
+                }
+
+                email.focus();
+                return false;
+            }
+            else {
+
+                if (emailerror) {
+                    emailerror.remove();
+                }
+
+            }
+
+            if (!pwdRegex.test(password.value)) {
+
+                if (!passworderror) {
+                    let p1 = document.createElement("p");
+                    p1.id = "passworderror";
+                    p1.textContent = "Valid Password Format";
+                    p1.style.color = "red";
+                    document.getElementById("passdiv").appendChild(p1);
+                }
+
+                password.focus();
+                return false;
+
+            } else {
+
+                if (passworderror) {
+                    passworderror.remove();
+                }
+
+            }
+            if (!/^[0-9]{10}$/.test(phone.value)) {
                 let p1 = document.createElement('p');
-                p1.id = 'emailerror';
-                p1.textContent = "Email required !!!";
-                p1.style.color = 'red';
-
-                document.getElementById('emaildiv').appendChild(p1);
-
-                username.focus();
+                p1.id = "phoneerror";
+                p1.textContent = "Enter Valid Contact";
+                p1.style.color = "red";
+                document.getElementById('phonediv').appendChild(p1)
+                phone.focus();
                 return false;
             }
 
             else {
-                emailerror.remove();
+                if (phoneerror) {
+                    phoneerror.remove();
+                }
+            }
+            let User = {
+                'username': username.value,
+                'email': email.value,
+                'password': password.value,
+                'phone': phone.value
+            };
+
+            if (localStorage.getItem("jenil-user")) {
+
+                let oldArray = JSON.parse(localStorage.getItem("jenil-user"));
+
+                oldArray.push(User);
+
+                localStorage.setItem("jenil-user", JSON.stringify(oldArray));
+
+            } else {
+
+                let UserArray = [];
+
+                UserArray.push(User);
+
+                localStorage.setItem("jenil-user", JSON.stringify(UserArray));
+
             }
 
-           
+            document.getElementById('username').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('phone').value = "";
+
+            
         });
+
+
     </script>
 
 
