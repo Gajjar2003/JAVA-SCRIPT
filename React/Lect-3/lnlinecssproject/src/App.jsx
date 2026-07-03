@@ -3,9 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import Productcatlog from './Components/Productcatlog'
-import Productarray from './Components/Productarray'
-
+import Lnlinecss from './Components/Lnlinecss'
 
 
 function App() {
@@ -13,8 +11,7 @@ function App() {
 
   return (
     <>
-     <Productcatlog/>
-    
+     <Lnlinecss/>
     </>
   )
 }
